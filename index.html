@@ -7,10 +7,11 @@
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-		<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	</head>
 	<body>
@@ -44,7 +45,26 @@
 
 			<hr>
 
-			<p><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" id="start-game">End Game</button></p>
+			<p><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" id="end-game">End Game</button></p>
 		</div>
+
+
+		<dialog class="mdl-dialog" id='add-player-dialog'>
+			<h4 class="mdl-dialog__title">Add Player</h4>
+			<div class="mdl-dialog__content">
+				<form action="#">
+					<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="text" id="player-name">
+					<label class="mdl-textfield__label" for="player-name">Player Name</label>
+				</form>
+			</div>
+
+			<div class="mdl-dialog__actions">
+				<button type="button" class="mdl-button" id="cancel-add-player-dialog">Cancel</button>
+				<button type="button" class="mdl-button" id="confirm-add-player-dialog">Confirm</button>
+			</div>
+		</dialog>
+
+		<script src="app.js"></script>
 	</body>
 </html>
