@@ -9,8 +9,6 @@ const CHARACTER_MORGANA = 5;
 const CHARACTER_OBERON = 6;
 const CHARACTER_EVIL_SERVANT = 7;
 
-var players = [];
-
 function isGood(character) {
 	if(character < 3) return false;
 	return true;
@@ -26,8 +24,6 @@ function RoleAssigner() {
 	this.confirmAddPlayerDialog = document.getElementById('confirm-add-player-dialog');
 	this.playerName = document.getElementById('player-name');
 	this.playersList = document.getElementById('players-list');
-
-
 
 	if(!this.addPlayerDialog)
 		dialogPolyfill.registerDialog(this.addPlayerDialog);
@@ -45,13 +41,16 @@ function RoleAssigner() {
 	this.addCharacterButton.addEventListener('click', this.addCharacter.bind(this));
 	this.startGameButton.addEventListener('click', this.startGame.bind(this));
 	this.endGameButton.addEventListener('click', this.endGame.bind(this));
+
+	this.players = [];
 }
 
 RoleAssigner.prototype.addPlayer = function() {
 	this.addPlayerDialog.close();
-	players.push(this.playerName.value);
-	$("#players-list").append("<li class=\"mdl-list__item-primary-content\"><i class=\"fa fa-user\"></i> " + this.playerName.value + "</li>");
+	this.players.push(this.playerName.value);
+	$(this.playersList).append("<li class=\"mdl-list__item-primary-content\"><i class=\"fa fa-user\"></i> " + this.playerName.value + "</li>");
 	this.playerName.value = "";
+	$("#num-players").text(this.players.length);
 };
 
 RoleAssigner.prototype.addCharacter = function() {
