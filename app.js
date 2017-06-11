@@ -9,6 +9,8 @@ const CHARACTER_MORGANA = 5;
 const CHARACTER_OBERON = 6;
 const CHARACTER_EVIL_SERVANT = 7;
 
+const NAMES = ["Merlin", "Percival", "Loyal Servant", "Modred", "Assassin", "Morgana", "Oberon", "Evil Servant"];
+
 function isGood(character) {
 	if(character < 3) return false;
 	return true;
@@ -25,6 +27,21 @@ function RoleAssigner() {
 	this.playerName = document.getElementById('player-name');
 	this.playersList = document.getElementById('players-list');
 
+	this.addCharacterDialog = document.getElementById('add-character-dialog');
+	this.closeAddCharacterDialog = document.getElementById('cancel-add-character-dialog');
+	this.confirmAddCharacterDialog = document.getElementById('confirm-add-character-dialog');
+
+	if(!this.addCharacterDialog)
+		dialogPolyfill.registerDialog(this.addCharacterDialog);
+
+	this.addCharacterButton.addEventListener('click', function() {
+		this.addCharacterDialog.showModal();
+	}.bind(this));
+
+	this.closeAddCharacterDialog.addEventListener('click', function() {
+		this.addCharacterDialog.close();
+	}.bind(this));
+
 	if(!this.addPlayerDialog)
 		dialogPolyfill.registerDialog(this.addPlayerDialog);
 
@@ -36,9 +53,6 @@ function RoleAssigner() {
 	}.bind(this));
 	this.confirmAddPlayerDialog.addEventListener('click', this.addPlayer.bind(this));
 
-
-
-	this.addCharacterButton.addEventListener('click', this.addCharacter.bind(this));
 	this.startGameButton.addEventListener('click', this.startGame.bind(this));
 	this.endGameButton.addEventListener('click', this.endGame.bind(this));
 
@@ -47,6 +61,7 @@ function RoleAssigner() {
 
 RoleAssigner.prototype.addPlayer = function() {
 	this.addPlayerDialog.close();
+	if(this.playerName.value.length == 0) return;
 	this.players.push(this.playerName.value);
 	$(this.playersList).append("<li class=\"mdl-list__item-primary-content\"><i class=\"fa fa-user\"></i> " + this.playerName.value + "</li>");
 	this.playerName.value = "";
